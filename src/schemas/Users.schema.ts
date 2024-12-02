@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { userEnum } from 'src/constants';
 
 @Schema()
 export class Users {
@@ -11,11 +12,10 @@ export class Users {
   @Prop({ required: true })
   password: string;
 
-  @Prop()
-  //   {
-  //   enum: Object.values(userEnum.role),
-  //   default: userEnum.role.USER
-  // }
+  @Prop({
+    enum: Object.values(userEnum.role),
+    default: userEnum.role.USER,
+  })
   role: string;
 }
 
